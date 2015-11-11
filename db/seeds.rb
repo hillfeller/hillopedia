@@ -23,6 +23,27 @@ wikis = Wiki.all
 
 
 
+# Create a member
+standard = User.create!(
+  name:     'Standard User',
+  email:    'standard@example.com',
+  password: 'helloworld'
+)
+
+premium = User.create!(
+  name:     'Premium User',
+  email:    'premium@example.com',
+  password: 'helloworld'
+)
+
+admin = User.create!(
+  name:     'Admin User',
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
+)
+
+
 puts "Seed finished"
 puts "#{User.count} users created."
 puts "#{Wiki.count} wikis created."

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_save {self.role ||= :standard}
    def show
      @user = User.find(params[:id]) if params[:id].present?
      unless @user
@@ -11,5 +12,6 @@ class User < ActiveRecord::Base
      end
    end
 
-  
+enum role: [:standard, :premium, :admin]
+
 end
