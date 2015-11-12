@@ -4,17 +4,12 @@ class WikisController < ApplicationController
 
   def index
     @wikis = Wiki.visible_to(current_user)
-
   end
 
   # GET /wikis/1
   # GET /wikis/1.json
   def show
-    @wiki = Wiki.find(params[:id])
-    unless @wiki.public || current_user.premium || current_user.admin
-      flash[:error] = "You must be signed in to view private topics."
-      redirect_to new_session_path
-    end
+    @wiki= Wiki.find(params[:id])
   end
 
   # GET /wikis/new
