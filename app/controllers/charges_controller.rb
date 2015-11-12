@@ -22,9 +22,12 @@ class ChargesController < ApplicationController
       currency: 'usd'
     )
 
+    current_user.premium!
+
     # set your premium role
 
     flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
+
     redirect_to user_path(current_user)
 
 

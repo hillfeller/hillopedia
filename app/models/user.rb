@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   before_save {self.role ||= :standard}
-  
+
+  has_many :wikis
+  has_many :charges
+
    def show
      @user = User.find(params[:id]) if params[:id].present?
      unless @user

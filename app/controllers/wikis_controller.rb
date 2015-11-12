@@ -1,14 +1,20 @@
 class WikisController < ApplicationController
-  before_action :set_wiki, only: [:new, :create, :show, :edit, :update, :destroy]
-  # GET /wikis
-  # GET /wikis.json
+  before_action :set_wiki, only: [:show, :edit, :update, :destroy]
+
+
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.visible_to(current_user)
+
   end
 
   # GET /wikis/1
   # GET /wikis/1.json
   def show
+    @wiki = Wiki.find(params[:id])
+    unless @wiki.public || current_user.premium || current_user.admin
+      flash[:error] = "You must be signed in to view private topics."
+      redirect_to new_session_path
+    end
   end
 
   # GET /wikis/new
