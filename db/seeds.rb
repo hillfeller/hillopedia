@@ -15,8 +15,8 @@ users = User.all
 50.times do
   Wiki.create!(
     user: users.sample,
-    title:  RandomData.random_paragraph
-
+    title:  RandomData.random_sentence,
+    body:   RandomData.random_paragraph
   )
 end
 wikis = Wiki.all
@@ -27,13 +27,15 @@ wikis = Wiki.all
 standard = User.create!(
   name:     'Standard User',
   email:    'standard@example.com',
-  password: 'helloworld'
+  password: 'helloworld',
+  role:     'standard'
 )
 
 premium = User.create!(
   name:     'Premium User',
   email:    'premium@example.com',
-  password: 'helloworld'
+  password: 'helloworld',
+  role:     'premium'
 )
 
 admin = User.create!(

@@ -1,7 +1,5 @@
 class WikisController < ApplicationController
-  before_action :set_wiki, only: [:show, :edit, :update, :destroy]
-  before_action :require_sign_in, except: [:index, :show]
-  before_action :authorize_user, except: [:index, :show]
+  before_action :set_wiki, only: [:new, :create, :show, :edit, :update, :destroy]
   # GET /wikis
   # GET /wikis.json
   def index
@@ -73,10 +71,5 @@ class WikisController < ApplicationController
       params.require(:wiki).permit(:title, :body, :private)
     end
 
-    def authorize_user
-      unless current_user.admin?
-        flash[:error] = "You must be an admin to do that."
-        redirect_to topics_path
-      end
-    end
+
 end
