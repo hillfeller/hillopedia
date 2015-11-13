@@ -10,6 +10,7 @@ class WikisController < ApplicationController
   # GET /wikis/1.json
   def show
     @wiki= Wiki.find(params[:id])
+
   end
 
   # GET /wikis/new
@@ -19,6 +20,7 @@ class WikisController < ApplicationController
 
   # GET /wikis/1/edit
   def edit
+    @title = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(@wiki.title)
   end
 
   # POST /wikis
