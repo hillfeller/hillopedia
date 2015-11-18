@@ -2,7 +2,7 @@ module WikisHelper
 
   def markdown(text)
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    #options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis]
+    options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis]
     return markdown.render(text).html_safe
   end
 

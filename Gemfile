@@ -32,6 +32,7 @@ gem 'figaro','1.0'
 gem 'redcarpet', '~> 3.3.3'
 gem 'albino'
 gem 'nokogiri'
+gem 'pundit'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

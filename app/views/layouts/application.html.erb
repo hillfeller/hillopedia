@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
 
   <% if user_signed_in? %>
   Signed in as: <strong><%= current_user.email %></strong> |
@@ -17,6 +18,8 @@
 <% end %>
 
 <%= yield %>
+
+</div>
 
 </body>
 </html>

@@ -14,6 +14,11 @@ class ChargesController < ApplicationController
     }
   end
 
+  def downgrade
+    current_user.standard!
+    redirect_to user_path(current_user)
+  end
+
 
 
   def create

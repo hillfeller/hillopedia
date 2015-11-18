@@ -1,6 +1,9 @@
 <%= form_tag charges_path do %>
+  <% if current_user.standard? %>
   <h4>Click this button to upgrade!</h4>
   <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
+  <% else %>
   <h4>Click this button to downgrade!</h4>
-  <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data2[:key] %>" data-amount=<%= @stripe_btn_data2[:amount] %> data-description="<%= @stripe_btn_data2[:description] %>" ></script>
+  <%= link_to "Downgrade Account", charges_downgrade_path, class: 'btn btn-danger' %>
+  <% end %>
 <% end %>

@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'users#show'
   resources :charges, only: [:new, :create, :update]
+  get "charges/downgrade"
 
 end

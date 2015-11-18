@@ -1,13 +1,11 @@
 class WikisController < ApplicationController
+  include Pundit
   before_action :set_wiki, only: [:show, :edit, :update, :destroy, :index]
-  #before_filter :authorize, only: :show
+  after_action :verify_policy_scoped, :only => :index
 
   def index
-    @wikis = Wiki.visible_to(current_user)
-    # @wikis = Wiki.private_visible_to("admin" || "premium")
-    # if @wikis.private
-    #   Wiki.visible_to(user.role == "admin" || user.role == "premium")
-    # end
+    @wikis = policy_scope(Wiki)
+
   end
 
   # GET /wikis/1
@@ -76,11 +74,5 @@ class WikisController < ApplicationController
     def wiki_params
       params.require(:wiki).permit(:title, :body, :private)
     end
-
-    # def authorize
-    #   if current_user && !current_user.admin? || !current_user.premium
-    #     redirect_to wikis_url alert: "You are not authorized to view this private wiki."
-    #   end
-    # end
 
 end

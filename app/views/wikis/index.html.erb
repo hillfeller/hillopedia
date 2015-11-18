@@ -2,7 +2,7 @@
 
 <h1>Listing Wikis</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -15,10 +15,11 @@
 
   <tbody>
     <% @wikis.each do |wiki| %>
+
       <tr>
         <td><%= wiki.title %></td>
         <td><%= wiki.body %></td>
-        <td><%= wiki.private %></td>
+        <td><%= wiki.public %></td>
         <td><%= wiki.user.name %></td>
         <td><%= link_to 'Show', wiki %></td>
         <td><%= link_to 'Edit', edit_wiki_path(wiki) %></td>
