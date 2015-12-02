@@ -20,5 +20,10 @@
   <%= @wiki.user.name %>
 </p>
 
+<p>
+  <strong>Collaborator:</strong>
+  <%= @collaborator.user.name %>
+</p>
+
 <%= link_to 'Edit', edit_wiki_path(@wiki) %> |
 <%= link_to 'Back', wikis_path %>

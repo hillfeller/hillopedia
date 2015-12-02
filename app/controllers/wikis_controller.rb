@@ -12,7 +12,10 @@ class WikisController < ApplicationController
   # GET /wikis/1.json
   def show
     @wiki = Wiki.find(params[:id])
-
+    # unless @wiki.public || user.role = "admin" || user.role = "premium"
+    #   flash[:error] = "You must be a premium user to view private topics."
+    #   redirect_to current_user
+    # end
   end
 
   # GET /wikis/new
@@ -72,7 +75,7 @@ class WikisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
-      params.require(:wiki).permit(:title, :body, :private)
+      params.require(:wiki).permit(:title, :body, :public)
     end
 
 end

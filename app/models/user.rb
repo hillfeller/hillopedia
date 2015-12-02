@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :wikis
   has_many :charges
+  has_many :collaborators
 
    def show
      @user = User.find(params[:id]) if params[:id].present?
@@ -15,6 +16,10 @@ class User < ActiveRecord::Base
        @user = current_user
      end
    end
+
+  #  def collaborators
+  #    Collaborator.where(user_id: id)
+  #  end
 
 enum role: [:standard, :premium, :admin]
 
